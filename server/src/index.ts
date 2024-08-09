@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import bodyParser from 'body-parser';
 
 // route imports
+import dashboardRoutes from './routes/dashboardRoutes';
 
 
 
@@ -22,9 +23,7 @@ app.use(cors());
 
 
 // routes
-app.get('/hello', (req, res) => {
-  res.send('Hello World');
-});
+app.use("/dashboard", dashboardRoutes); // dashboard routes
 
 
 // server
