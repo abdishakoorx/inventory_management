@@ -1,3 +1,4 @@
+import Rating from "@/app/(components)/Rating";
 import { useGetDashboardMetricsQuery } from "@/state/api";
 import { ShoppingBag } from "lucide-react";
 import React from "react";
@@ -32,7 +33,7 @@ const CardPopularProducts = () => {
                         {product.price}
                       </span>
                       <span className="mx-2">|</span>
-                      <div>{product.rating}</div>
+                      <Rating rating={product.rating || 0} />
                     </div>
                   </div>
                 </div>
