@@ -7,6 +7,9 @@ import bodyParser from 'body-parser';
 
 // route imports
 import dashboardRoutes from './routes/dashboardRoutes';
+import productRoutes from './routes/productRoutes';
+import expenseRoutes from './routes/expenseRoutes';
+import userRoutes from './routes/userRoutes';
 
 
 
@@ -24,6 +27,9 @@ app.use(cors());
 
 // routes
 app.use("/dashboard", dashboardRoutes); // dashboard routes
+app.use('/products', productRoutes); // product routes
+app.use('/expenses', expenseRoutes); // expenses routes
+app.use('/users', userRoutes); // users routes
 
 
 // server
