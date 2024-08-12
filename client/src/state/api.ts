@@ -18,7 +18,7 @@ interface SalesSummary {
 interface PurchaseSummary {
   purchaseSummaryId: string;
   totalPurchased: number;
-  changedPercentage?: number;
+  changePercentage?: number;
   date: string;
 }
 
