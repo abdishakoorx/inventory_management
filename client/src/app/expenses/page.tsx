@@ -15,6 +15,9 @@ import {
 } from "recharts";
 import Header from "../(components)/Header";
 import { ListCollapse } from "lucide-react";
+import { useAppSelector } from "../redux";
+
+
 
 type AggregatedDataItem = {
   name: string;
@@ -42,6 +45,9 @@ const Expenses = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+
+  // Access isDarkMode from Redux state
+  const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
   const {
     data: expensesData,
@@ -129,7 +135,8 @@ const Expenses = () => {
               <select
                 id="category"
                 name="category"
-                className={classNames.selectInput}
+                className={`w-full py-2 px-4 pl-10 pr-4 rounded-lg border-2 transition duration-300
+                  ${isDarkMode ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500' : 'bg-white text-gray-900 border-gray-300 focus:border-blue-500'}`}
                 defaultValue="All"
                 onChange={(e) => setSelectedCategory(e.target.value)}
               >
@@ -148,7 +155,8 @@ const Expenses = () => {
                 type="date"
                 id="start-date"
                 name="start-date"
-                className={classNames.selectInput}
+                className={`w-full py-2 px-4 pl-10 pr-4 rounded-lg border-2 transition duration-300
+                  ${isDarkMode ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500' : 'bg-white text-gray-900 border-gray-300 focus:border-blue-500'}`}
                 onChange={(e) => setStartDate(e.target.value)}
               />
             </div>
@@ -161,7 +169,8 @@ const Expenses = () => {
                 type="date"
                 id="end-date"
                 name="end-date"
-                className={classNames.selectInput}
+                className={`w-full py-2 px-4 pl-10 pr-4 rounded-lg border-2 transition duration-300
+                  ${isDarkMode ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500' : 'bg-white text-gray-900 border-gray-300 focus:border-blue-500'}`}
                 onChange={(e) => setEndDate(e.target.value)}
               />
             </div>
