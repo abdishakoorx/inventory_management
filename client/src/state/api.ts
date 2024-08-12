@@ -28,7 +28,7 @@ interface ExpensesSummary {
   date: string;
 }
 
-interface ExpenseByCategorySummary {
+export interface ExpenseByCategorySummary {
   expenseByCategorySummaryId: string;
   category: string;
   amount: string;
