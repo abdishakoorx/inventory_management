@@ -1,7 +1,7 @@
 modules.exports = {
     apps:[
         {
-            name: "flipflap",
+            name: "inventory-management",
             script: "npm",
             args: "run dev",
             env: {
