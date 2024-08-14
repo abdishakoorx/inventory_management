@@ -75,7 +75,7 @@ const Settings = () => {
                       settingsCopy[index].value = e.target.value;
                       setUserSettings(settingsCopy);
                     }}
-                    className={`w-[300px] py-2 px-4 pl-10 pr-4 rounded-xl border-2 transition duration-300
+                    className={`w-full py-2 px-4 pl-10 pr-4 rounded-xl border-2 transition duration-300
                       ${isDarkMode ? 'bg-gray-700 text-white border-gray-600 focus:border-blue-500 shadow-lg' : 'bg-white text-gray-900 border-gray-300 focus:border-blue-500'}`}
                   />
                 )}

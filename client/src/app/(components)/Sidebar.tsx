@@ -1,10 +1,21 @@
 "use client";
-import { Archive, CircleDollarSign, Clipboard, Layout, LucideIcon, Menu, Settings, SlidersHorizontal, User } from "lucide-react";
+import {
+  Archive,
+  CircleDollarSign,
+  Clipboard,
+  Layout,
+  LucideIcon,
+  Menu,
+  Settings,
+  SlidersHorizontal,
+  User,
+} from "lucide-react";
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../redux";
 import { setIsSidebarCollapsed } from "@/state";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 interface SidebarLinkProps {
   href: string;
@@ -56,8 +67,6 @@ const Sidebar = () => {
     dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));
   };
 
-  
-
   const sidebarClassNames = `fixed flex flex-col ${
     isSidebarCollapsed ? "w-0 md:w-16" : "w-72 md:w-64"
   } bg-white transition-all duration-300 ease-in-out h-full shadow-md z-40 overflow-hidden `;
@@ -70,7 +79,13 @@ const Sidebar = () => {
           isSidebarCollapsed ? "px-5" : "px-8"
         }`}
       >
-        <div>logo</div>
+        <Image
+          src="https://my-s3-inventorymanagement.s3.ap-southeast-1.amazonaws.com/logo.png"
+          height={30}
+          width={30}
+          alt="logo"
+          className="rounded w-8"
+        />
         <h1
           className={`font-bold text-2xl ${
             isSidebarCollapsed ? "hidden" : "block"
@@ -88,12 +103,42 @@ const Sidebar = () => {
 
       {/* links */}
       <div className="flex-grow mt-8">
-        <SidebarLinks href="/dashboard" icon={Layout} label="Dashboard" isCollapsed={isSidebarCollapsed} />
-        <SidebarLinks href="/inventory" icon={Archive} label="Inventory" isCollapsed={isSidebarCollapsed} />
-        <SidebarLinks href="/products" icon={Clipboard} label="Products" isCollapsed={isSidebarCollapsed} />
-        <SidebarLinks href="/users" icon={User} label="Users" isCollapsed={isSidebarCollapsed} />
-        <SidebarLinks href="/expenses" icon={CircleDollarSign} label="Expenses" isCollapsed={isSidebarCollapsed} />
-        <SidebarLinks href="/settings" icon={SlidersHorizontal} label="Settings" isCollapsed={isSidebarCollapsed} />
+        <SidebarLinks
+          href="/dashboard"
+          icon={Layout}
+          label="Dashboard"
+          isCollapsed={isSidebarCollapsed}
+        />
+        <SidebarLinks
+          href="/inventory"
+          icon={Archive}
+          label="Inventory"
+          isCollapsed={isSidebarCollapsed}
+        />
+        <SidebarLinks
+          href="/products"
+          icon={Clipboard}
+          label="Products"
+          isCollapsed={isSidebarCollapsed}
+        />
+        <SidebarLinks
+          href="/users"
+          icon={User}
+          label="Users"
+          isCollapsed={isSidebarCollapsed}
+        />
+        <SidebarLinks
+          href="/expenses"
+          icon={CircleDollarSign}
+          label="Expenses"
+          isCollapsed={isSidebarCollapsed}
+        />
+        <SidebarLinks
+          href="/settings"
+          icon={SlidersHorizontal}
+          label="Settings"
+          isCollapsed={isSidebarCollapsed}
+        />
       </div>
 
       {/* footer */}

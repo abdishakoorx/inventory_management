@@ -30,7 +30,7 @@ app.use('/products', productRoutes_1.default); // product routes
 app.use('/expenses', expenseRoutes_1.default); // expenses routes
 app.use('/users', userRoutes_1.default); // users routes
 // server
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
+const PORT = Number(process.env.PORT) || 3001;
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
 });

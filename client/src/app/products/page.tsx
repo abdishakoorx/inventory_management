@@ -6,6 +6,7 @@ import CreateProductModal from "./(components)/CreateProductModal";
 import Header from "../(components)/Header";
 import Rating from "../(components)/Rating";
 import { useAppSelector } from "../redux";
+import Image from "next/image";
 
 type ProductFormData = {
   name: string;
@@ -63,7 +64,11 @@ const Products = () => {
         <div className="relative w-full max-w-md">
           <input
             className={`w-full py-2 px-4 pl-10 pr-4 rounded-full border-2 transition duration-300
-              ${isDarkMode ? 'bg-gray-900 text-white border-gray-700 focus:border-blue-500' : 'bg-white text-gray-900 border-gray-300 focus:border-blue-500'}`}
+              ${
+                isDarkMode
+                  ? "bg-gray-900 text-white border-gray-700 focus:border-blue-500"
+                  : "bg-white text-gray-900 border-gray-300 focus:border-blue-500"
+              }`}
             placeholder="Search products..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -73,23 +78,32 @@ const Products = () => {
       </div>
 
       {/* BODY PRODUCTS LIST */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProducts?.map((product) => (
           <div
             key={product.productId}
-            className="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-lg"
+            className="bg-white rounded-2xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"
           >
-            <div className="p-5">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            <div className="flex flex-col items-center p-6">
+              <div className="w-full h-96 mb-6 relative">
+                <Image
+                  src={`https://my-s3-inventorymanagement.s3.ap-southeast-1.amazonaws.com/product${
+                    Math.floor(Math.random() * 4) + 1
+                  }.jpg`}
+                  alt={product.name}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-lg"
+                />
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
                 {product.name}
               </h3>
-              <p className="text-3xl font-bold text-blue-600 mb-4">
+              <p className="text-4xl font-light text-gray-900 mb-4">
                 ${product.price.toFixed(2)}
               </p>
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-600">
-                  Stock: {product.stockQuantity}
-                </span>
+              <div className="w-full flex justify-between items-center text-sm text-gray-500">
+                <span>Stock: {product.stockQuantity}</span>
                 {product.rating && (
                   <div className="flex items-center">
                     <Rating rating={product.rating} />
